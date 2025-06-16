@@ -1,0 +1,8 @@
+package utez.edu.mx.U3_04_OMM.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import utez.edu.mx.U3_04_OMM.model.Cede;
+
+public interface CedeRepository extends JpaRepository<Cede, Long> {
+
+}
