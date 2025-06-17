@@ -1,25 +1,21 @@
 package utez.edu.mx.U3_04_OMM.controllers;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import utez.edu.mx.U3_04_OMM.Config.ApiResponse;
 import utez.edu.mx.U3_04_OMM.model.Almacen;
 import utez.edu.mx.U3_04_OMM.service.AlmacenService;
-
 import java.util.List;
 
-
 @RestController
-@RequestMapping("/api/almacen")
+@RequestMapping("/api/almacenes")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class AlmacenController {
 
     private final AlmacenService almacenService;
 
-    @GetMapping("/")
+    @GetMapping
     public List<Almacen> getAll() {
         return almacenService.findAll();
     }
@@ -29,7 +25,7 @@ public class AlmacenController {
         return almacenService.findById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<ApiResponse> create(@RequestBody Almacen almacen) {
         return almacenService.save(almacen);
     }

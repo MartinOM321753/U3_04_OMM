@@ -1,5 +1,6 @@
 package utez.edu.mx.U3_04_OMM.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -27,7 +28,6 @@ public class Cede {
     @NotBlank(message = "El municipio no puede estar vacío")
     @Size(max = 50, message = "El municipio no debe superar los 50 caracteres")
     private String municipio;
-
 
     @OneToMany(mappedBy = "cede", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Almacen> almacenes;

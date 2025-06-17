@@ -1,22 +1,17 @@
 package utez.edu.mx.U3_04_OMM.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import jakarta.persistence.*;
-@Entity
+import jakarta.validation.constraints.*;
+import lombok.*;
+
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 @Getter
 @Setter
-
 public class Cliente {
 
     @Id
@@ -35,4 +30,8 @@ public class Cliente {
     @Email(message = "El formato del correo no es válido")
     @Column(unique = true, nullable = false)
     private String correo;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Sales> ventas;
+
 }
